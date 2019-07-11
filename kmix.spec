@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kmix
-Version  : 19.04.2
-Release  : 7
-URL      : https://download.kde.org/stable/applications/19.04.2/src/kmix-19.04.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.2/src/kmix-19.04.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.2/src/kmix-19.04.2.tar.xz.sig
+Version  : 19.04.3
+Release  : 8
+URL      : https://download.kde.org/stable/applications/19.04.3/src/kmix-19.04.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.3/src/kmix-19.04.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.3/src/kmix-19.04.3.tar.xz.sig
 Summary  : KDE volume control program
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.0
@@ -85,16 +85,17 @@ locales components for the kmix package.
 
 
 %prep
-%setup -q -n kmix-19.04.2
+%setup -q -n kmix-19.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559895129
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562875490
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -103,11 +104,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1559895129
+export SOURCE_DATE_EPOCH=1562875490
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kmix
 cp COPYING %{buildroot}/usr/share/package-licenses/kmix/COPYING
@@ -200,8 +201,6 @@ popd
 /usr/share/doc/HTML/en/kmix/kmix.png
 /usr/share/doc/HTML/es/kmix/index.cache.bz2
 /usr/share/doc/HTML/es/kmix/index.docbook
-/usr/share/doc/HTML/es/kmix/kmix-channels.png
-/usr/share/doc/HTML/es/kmix/kmix-configure.png
 /usr/share/doc/HTML/es/kmix/kmix-file.png
 /usr/share/doc/HTML/es/kmix/kmix-master.png
 /usr/share/doc/HTML/es/kmix/kmix-options.png
