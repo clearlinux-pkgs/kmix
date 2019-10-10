@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kmix
-Version  : 19.08.1
-Release  : 10
-URL      : https://download.kde.org/stable/applications/19.08.1/src/kmix-19.08.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.1/src/kmix-19.08.1.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.1/src/kmix-19.08.1.tar.xz.sig
+Version  : 19.08.2
+Release  : 11
+URL      : https://download.kde.org/stable/applications/19.08.2/src/kmix-19.08.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.2/src/kmix-19.08.2.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.2/src/kmix-19.08.2.tar.xz.sig
 Summary  : KDE volume control program
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.0
@@ -85,14 +85,14 @@ locales components for the kmix package.
 
 
 %prep
-%setup -q -n kmix-19.08.1
+%setup -q -n kmix-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567705526
+export SOURCE_DATE_EPOCH=1570748975
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -105,11 +105,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567705526
+export SOURCE_DATE_EPOCH=1570748975
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kmix
 cp COPYING %{buildroot}/usr/share/package-licenses/kmix/COPYING
